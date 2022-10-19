@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+
+
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3000:80"
+
   postgres:
     image: 'postgres:latest'
     healthcheck:
@@ -16,13 +27,6 @@ services:
   redis:
     image: 'redis:latest'
 
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
-    ports:
-      - "3050:80"
 
   api:
     build:
@@ -46,7 +50,7 @@ services:
   client:
     build:
       dockerfile: Dockerfile.dev
-      contex: ./client
+      context: ./client
     volumes:
       - /app/node_modules
       - ./client:/app
@@ -55,7 +59,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./worker
-    voulumes:
+    volumes:
       - /app/node_modules
       - ./worker:/app
 
