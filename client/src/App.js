@@ -11,6 +11,7 @@ function App() {
         <header className="App-header">
           <Link to="/">Home</Link>
           <Link to="/otherpage">OtherPage</Link>
+          <Link to="/otherpage">Another Page</Link>
         </header>
         <Route exact path="/" component={Fib}></Route>
         <Route path="/otherpage" component={otherPage}></Route>
